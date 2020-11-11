@@ -27,8 +27,8 @@
       "type": "string",
       "allowedValues": [
         "Ubuntu 16.04 LTS",
-        "CentOS 7.5", 
-        "RHEL 7.7", 
+        "CentOS 7.5",
+        "RHEL 7.7",
         "Windows 2019-Datacenter",
         "Windows 2016-Datacenter",
         "Windows 2012-R2-Datacenter",
@@ -185,7 +185,7 @@
     "virtualMachineSize": "[parameters('VMSize')]",
     "linux_os": [
       "Ubuntu 16.04 LTS",
-      "CentOS 7.5", 
+      "CentOS 7.5",
       "RHEL 7.7"
     ],
     "os_is_linux": "[contains(variables('linux_os'),parameters('OS'))]", //true if linux
@@ -234,7 +234,7 @@
       }
     },
     "publicIpName": "[substring(concat(uniqueString(resourceGroup().id, deployment().name)), 0, 6)]",
-    "LinuxExecute": "[concat('-u ''', parameters('adminUsername'), ''' -p ''', parameters('adminPassword'), ''' -h ''', parameters('tableau_admin_username'), ''' -e ''', parameters('tableau_version'), ''' -i ''', parameters('tableau_admin_password'), ''' -j ''', parameters('registration_zip'), ''' -k ''', parameters('registration_country'), ''' -l ''', parameters('registration_city'), ''' -m ''', parameters('registration_last_name'), ''' -n ''', parameters('registration_industry'), ''' -o yes -q ''', parameters('registration_title'),''' -r ''', parameters('registration_phone'),''' -s ''', parameters('registration_company'), ''' -t ''', parameters('registration_state'), ''' -x ''', parameters('registration_email'), ''' -v ''', parameters('registration_department'), ''' -g ''', variables('installscripturi'), ''' -y ''', parameters('license_key'), ''' -f ''', parameters('OS'), ''' -w ''', parameters('registration_first_name'), '''')]",
+    "LinuxExecute": "[concat('-u ''', parameters('adminUsername'), ''' -p ''', parameters('adminPassword'), ''' -h ''', parameters('tableau_admin_username'), ''' -i ''', parameters('tableau_admin_password'), ''' -j ''', parameters('registration_zip'), ''' -k ''', parameters('registration_country'), ''' -l ''', parameters('registration_city'), ''' -m ''', parameters('registration_last_name'), ''' -n ''', parameters('registration_industry'), ''' -o yes -q ''', parameters('registration_title'),''' -r ''', parameters('registration_phone'),''' -s ''', parameters('registration_company'), ''' -t ''', parameters('registration_state'), ''' -x ''', parameters('registration_email'), ''' -v ''', parameters('registration_department'), ''' -g ''', variables('installscripturi'), ''' -y ''', parameters('license_key'), ''' -f ''', parameters('OS'), ''' -w ''', parameters('registration_first_name'), '''')]",
     "LinCmdWrapper": "[concat('bash ./config-linux.sh ', variables('LinuxExecute'))]",
     "linuxscripturi": "[uri(parameters('_artifactsLocation'), concat('scripts/config-linux.sh', parameters('_artifactsLocationSasToken')))]",
     "installscripturi": "[uri(parameters('_artifactsLocation'), concat('scripts/automated-installer', parameters('_artifactsLocationSasToken')))]",
@@ -264,7 +264,7 @@
         "timestamp": 123456789
       },
         "protectedSettings": {
-        "commandToExecute": 
+        "commandToExecute":
           "[variables('LinCmdWrapper')]",
         "fileUris": [
           "[variables('linuxscripturi')]"
